@@ -1,0 +1,19 @@
+var ioc = {
+	dataSource:{
+		type:"com.mchange.v2.c3p0.ComboPooledDataSource",//c3p0
+		events:{
+			depose:"close"
+		},
+		fields:{
+			driverClass:"com.mysql.jdbc.Driver",
+			jdbcUrl:"jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8",
+			user:"root",
+			password:"123456"
+		}
+	},
+	dao : {
+		type : "org.nutz.dao.impl.NutDao",//该dao封装了所有的数据库操作
+		args : [{refer:'dataSource'}]//通过该dao的public NutDao(DataSource dataSource)构造方法为其赋值
+	}
+	
+}
